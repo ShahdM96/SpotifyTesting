@@ -30,4 +30,11 @@ public class LoginPage {
 
         return new HomePage(driver);
     }
+    public LoginPage loginAsInvalidUser(String userName, String password) {
+        driver.findElement(emailFieldBy).sendKeys(userName);
+        driver.findElement(passwordFieldBy).sendKeys(password);
+        driver.findElement(loginButtonBy).click();
+
+        return new LoginPage(driver);
+    }
 }

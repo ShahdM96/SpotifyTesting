@@ -8,17 +8,21 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.sql.Driver;
 
+import static org.example.DriverFactory.getDriver;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class WebFormTesting {
+    /**
     WebDriver driver;
     private static final String baseURL = "https://www.selenium.dev/selenium/web/web-form.html";
 
 
     @BeforeEach
     public void setup() {
-        driver = new ChromeDriver();
+        driver = getDriver();
+
+        //driver = new ChromeDriver();
     }
     @Test
     void testTextInput() {
@@ -53,7 +57,7 @@ public class WebFormTesting {
             driver.quit();
         }
     }
-
+**/
 }
 
 

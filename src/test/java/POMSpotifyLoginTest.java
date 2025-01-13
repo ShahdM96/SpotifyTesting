@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import static org.example.DriverFactory.getDriver;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class POMSpotifyLoginTest {
@@ -14,8 +15,11 @@ public class POMSpotifyLoginTest {
 
     @BeforeEach
     public void setUp() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        driver = getDriver();
+
+//        driver = new ChromeDriver();
+//        driver.manage().window().maximize();
+
         driver.get("http://localhost:8082/login");
 
         loginPage = new LoginPage(driver);
@@ -25,6 +29,10 @@ public class POMSpotifyLoginTest {
     public void testValidLogin() {
         HomePage home = loginPage.loginAsValidUser("user@example.com", "password123");
         assertTrue(home.isLoggedInSuccessfully());
+    }
+    @Test
+    public void testInvalidLogin() {
+        LoginPage newLoginPage = loginPage.loginAsInvalidUser("invalid username", "invalid password");
     }
 
     @AfterEach
